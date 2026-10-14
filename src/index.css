@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #F1E6D2;
+  --color-ivory-light: #FAF8F3;
+  --color-racing-red: #B51F2B;
+  --color-burgundy: #4A101A;
+  --color-ink-black: #171717;
+  --color-graphite: #343434;
+  --color-muted-grey: #77736D;
+  --color-light-border: #D9D3C9;
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-condensed: "Barlow Condensed", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+}
+
+/* Custom background grid pattern */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(181, 31, 43, 0.18) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: radial-gradient(rgba(181, 31, 43, 0.28) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #171717;
+}
+::-webkit-scrollbar-thumb {
+  background: #B51F2B;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d62837;
+}
+
+/* Smooth fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s ease-out forwards;
+}
