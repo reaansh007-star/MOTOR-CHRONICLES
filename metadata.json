@@ -1,6 +1,6 @@
 {
   "name": "Motor Chronicles",
-  "description": "A premium digital automotive magazine exploring the Indian automotive landscape, global motorcycles, EV innovation, supercars, and motorsport.",
+  "description": "Car News India: In-depth automotive journalism covering the Indian SUV market, electric vehicles in India, motorcycle engineering, supercars, and motorsport.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

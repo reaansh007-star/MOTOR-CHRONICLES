@@ -87,17 +87,37 @@ export const Footer: React.FC<FooterProps> = ({ onSelectCategory, onOpenComparis
             </ul>
           </div>
 
-          {/* Editorial Scope */}
+          {/* Editorial Focus & Clean Keyword Links */}
           <div>
             <h4 className="text-white font-bold mb-3 border-b border-[#343434] pb-1 tracking-widest text-sm">
               EDITORIAL FOCUS
             </h4>
-            <ul className="space-y-2 normal-case font-['DM_Sans'] text-xs text-[#FAF8F3]/60">
-              <li>• Indian Car Market Structural Analysis</li>
-              <li>• Tata Motors &amp; Mahindra Platform Engineering</li>
-              <li>• Electric Two-Wheeler Thermal Performance</li>
-              <li>• Formula 1 Aerodynamics &amp; MGU-K Tech</li>
-              <li>• Classic Car Heritage &amp; Hand-Wheeled Restoration</li>
+            <ul className="space-y-2 normal-case font-['DM_Sans'] text-xs text-[#FAF8F3]/70">
+              <li>
+                <a href="/indian-suv-market" className="hover:text-[#B51F2B] transition-colors block">
+                  • 5-star crash safety ratings (Tata &amp; Mahindra SUVs)
+                </a>
+              </li>
+              <li>
+                <a href="/electric-vehicles-india" className="hover:text-[#B51F2B] transition-colors block">
+                  • Electric Vehicles in India &amp; Battery Technology
+                </a>
+              </li>
+              <li>
+                <a href="/royal-enfield-motorcycles" className="hover:text-[#B51F2B] transition-colors block">
+                  • Royal Enfield Motorcycles &amp; Himalayan 450
+                </a>
+              </li>
+              <li>
+                <a href="/car-news-india" className="hover:text-[#B51F2B] transition-colors block">
+                  • Car News India: Editorial News &amp; Reports
+                </a>
+              </li>
+              <li>
+                <a href="/showdown" className="hover:text-[#B51F2B] transition-colors block">
+                  • Formula 1 Aerodynamics &amp; Supercar Showdown
+                </a>
+              </li>
             </ul>
           </div>
 

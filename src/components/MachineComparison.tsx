@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, SlidersHorizontal, Trophy, Gauge, Zap, CheckCircle2 } from 'lucide-react';
 import { MachineShowdown } from '../types';
+import { PageKeywordsBanner } from './PageKeywordsBanner';
 
 interface MachineComparisonProps {
   isOpen: boolean;
@@ -70,7 +71,14 @@ export const MachineComparison: React.FC<MachineComparisonProps> = ({
         </div>
 
         {/* Content Area */}
-        <div className="p-6 sm:p-8 space-y-8 max-h-[75vh] overflow-y-auto">
+        <div className="p-6 sm:p-8 space-y-6 max-h-[75vh] overflow-y-auto">
+          {/* Page Target Keywords */}
+          <PageKeywordsBanner
+            mainKeyword="Machine Specification Showdown"
+            relatedKeywords={['power & torque telemetry', '0-100 km/h acceleration duel']}
+            variant="article"
+          />
+
           <p className="font-['Cormorant_Garamond'] text-lg sm:text-xl italic text-[#77736D] dark:text-[#D9D3C9] text-center max-w-3xl mx-auto">
             "{current.subtitle}"
           </p>

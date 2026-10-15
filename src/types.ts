@@ -15,10 +15,18 @@ export interface ArticleSection {
   specSheet?: { label: string; value: string }[];
 }
 
+export interface PageKeywords {
+  mainKeyword: string;
+  relatedKeywords: [string, string];
+}
+
 export interface Article {
   id: string;
+  slug: string;
   category: ArticleCategory;
   title: string;
+  seoTitle: string;
+  metaDescription: string;
   subtitle: string;
   author: string;
   authorRole: string;
@@ -29,6 +37,9 @@ export interface Article {
   imageCaption?: string;
   excerpt: string;
   keywords: string[];
+  mainKeyword: string;
+  relatedKeywords: [string, string];
+  primaryAnchorText?: string;
   keyTakeaways: string[];
   sections: ArticleSection[];
 }

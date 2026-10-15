@@ -52,11 +52,39 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center space-x-3">
             <span className="inline-block w-2 h-2 rounded-full bg-[#B51F2B] animate-pulse"></span>
             <span className="font-semibold text-[#FAF8F3]">
-              ISSUE NO. 42 — SPECIAL REPORT: THE INDIAN AUTOMOTIVE REVOLUTION &amp; GLOBAL MOBILITY
+              ISSUE NO. 42 — FLAGSHIP ANCHORS:
             </span>
+            <div className="hidden sm:flex items-center space-x-3 text-[11px] font-bold">
+              <a
+                href="/indian-suv-market"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#B51F2B] transition-colors underline decoration-[#B51F2B]"
+              >
+                1. 5-star crash safety ratings
+              </a>
+              <span>•</span>
+              <a
+                href="/electric-vehicles-india"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#B51F2B] transition-colors underline decoration-[#B51F2B]"
+              >
+                2. India's EV Ecosystem
+              </a>
+              <span>•</span>
+              <a
+                href="/royal-enfield-motorcycles"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#B51F2B] transition-colors underline decoration-[#B51F2B]"
+              >
+                3. Royal Enfield
+              </a>
+            </div>
           </div>
-          <div className="hidden md:flex items-center space-x-6 text-[#D9D3C9]/70 text-[11px]">
-            <span className="hover:text-white transition-colors">NEW DELHI • 28°C</span>
+          <div className="hidden lg:flex items-center space-x-5 text-[#D9D3C9]/70 text-[11px]">
+            <span className="hover:text-white transition-colors">NEW DELHI</span>
             <span className="hover:text-white transition-colors">MUMBAI</span>
             <span className="hover:text-white transition-colors">STUTTGART</span>
             <span className="hover:text-white transition-colors">MARANELLO</span>

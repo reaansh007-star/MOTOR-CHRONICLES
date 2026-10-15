@@ -1,29 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Search, X, ArrowRight, Clock } from 'lucide-react';
+import { Search, X, ExternalLink, Clock } from 'lucide-react';
 import { Article } from '../types';
+import { getArticleUrl } from '../utils/routing';
 
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
   articles: Article[];
-  onSelectArticle: (article: Article) => void;
+  onSelectArticle?: (article: Article) => void;
 }
 
 export const SearchModal: React.FC<SearchModalProps> = ({
   isOpen,
   onClose,
   articles,
-  onSelectArticle,
 }) => {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        // toggle
-      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -114,13 +110,13 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             </div>
           ) : (
             filtered.map((art) => (
-              <div
+              <a
                 key={art.id}
-                onClick={() => {
-                  onSelectArticle(art);
-                  onClose();
-                }}
-                className="p-3 bg-white dark:bg-[#242424] border border-[#D9D3C9] dark:border-[#343434] hover:border-[#B51F2B] cursor-pointer transition-colors flex justify-between items-center group"
+                href={getArticleUrl(art)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                className="p-3 bg-white dark:bg-[#242424] border border-[#D9D3C9] dark:border-[#343434] hover:border-[#B51F2B] cursor-pointer transition-colors flex justify-between items-center group block"
               >
                 <div className="space-y-1 pr-4">
                   <div className="flex items-center space-x-2 text-[10px] font-['Barlow_Condensed'] tracking-widest uppercase">
@@ -130,6 +126,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                       <Clock className="w-2.5 h-2.5 mr-1" />
                       {art.readTime}
                     </span>
+                    <span>•</span>
+                    <span className="text-[#B51F2B] font-semibold">OPENS IN NEW TAB</span>
                   </div>
                   <h4 className="font-['Bebas_Neue'] text-xl text-[#171717] dark:text-white uppercase leading-snug group-hover:text-[#B51F2B] transition-colors">
                     {art.title}
@@ -138,8 +136,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     {art.excerpt}
                   </p>
                 </div>
-                <ArrowRight className="w-4 h-4 text-[#77736D] group-hover:text-[#B51F2B] transition-colors shrink-0" />
-              </div>
+                <ExternalLink className="w-4 h-4 text-[#77736D] group-hover:text-[#B51F2B] transition-colors shrink-0" />
+              </a>
             ))
           )}
         </div>

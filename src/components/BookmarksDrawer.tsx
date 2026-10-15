@@ -1,12 +1,13 @@
 import React from 'react';
-import { Bookmark, X, Trash2, ArrowRight, Clock } from 'lucide-react';
+import { Bookmark, X, Trash2, Clock, ExternalLink } from 'lucide-react';
 import { Article } from '../types';
+import { getArticleUrl } from '../utils/routing';
 
 interface BookmarksDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   bookmarkedArticles: Article[];
-  onOpenArticle: (article: Article) => void;
+  onOpenArticle?: (article: Article) => void;
   onRemoveBookmark: (articleId: string) => void;
   onClearAll: () => void;
 }
@@ -15,7 +16,6 @@ export const BookmarksDrawer: React.FC<BookmarksDrawerProps> = ({
   isOpen,
   onClose,
   bookmarkedArticles,
-  onOpenArticle,
   onRemoveBookmark,
   onClearAll,
 }) => {
@@ -64,6 +64,7 @@ export const BookmarksDrawer: React.FC<BookmarksDrawerProps> = ({
                     {art.category}
                   </span>
                   <button
+                    type="button"
                     onClick={() => onRemoveBookmark(art.id)}
                     className="text-[#77736D] hover:text-[#B51F2B] p-1 cursor-pointer"
                     title="Remove from Shelf"
@@ -72,31 +73,29 @@ export const BookmarksDrawer: React.FC<BookmarksDrawerProps> = ({
                   </button>
                 </div>
 
-                <h4
-                  onClick={() => {
-                    onOpenArticle(art);
-                    onClose();
-                  }}
+                <a
+                  href={getArticleUrl(art)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-['Bebas_Neue'] text-xl uppercase leading-snug cursor-pointer group-hover:text-[#B51F2B] transition-colors line-clamp-2"
                 >
                   {art.title}
-                </h4>
+                </a>
 
                 <div className="flex justify-between items-center text-xs font-['Barlow_Condensed'] uppercase tracking-wider text-[#77736D] dark:text-[#D9D3C9]/60 pt-2 border-t border-[#D9D3C9]/40 dark:border-[#343434]">
                   <span className="flex items-center">
                     <Clock className="w-3 h-3 mr-1 text-[#B51F2B]" />
                     {art.readTime}
                   </span>
-                  <button
-                    onClick={() => {
-                      onOpenArticle(art);
-                      onClose();
-                    }}
-                    className="text-[#B51F2B] font-bold flex items-center space-x-1 cursor-pointer"
+                  <a
+                    href={getArticleUrl(art)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#B51F2B] font-bold flex items-center space-x-1 cursor-pointer hover:underline"
                   >
-                    <span>READ NOW</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                    <span>OPEN IN NEW TAB</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
             ))

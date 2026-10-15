@@ -3,8 +3,11 @@ import { Article } from '../types';
 export const ARTICLES: Article[] = [
   {
     id: 'tata-mahindra-suv-story',
+    slug: 'indian-suv-market',
     category: 'INDIA AUTO',
     title: 'How Tata Motors & Mahindra Reshaped the Indian SUV Market',
+    seoTitle: 'Indian SUV Market: Tata & Mahindra Rise | Motor Chronicles',
+    metaDescription: 'Explore how the Indian SUV market was reshaped by Tata vs Mahindra SUVs, bringing 5-star crash safety and electric powertrains to the SUV market in India.',
     subtitle: 'From rugged military workhorses to world-class safety pioneers and EV innovators.',
     author: 'Rajesh Sharma',
     authorRole: 'Senior Automotive Analyst, New Delhi',
@@ -15,6 +18,9 @@ export const ARTICLES: Article[] = [
     imageCaption: 'Fig 1.0 — High Ground Clearance & Monocoque Chassis Architecture',
     excerpt: 'An in-depth analysis of how indigenous manufacturers redefined utility, 5-star Global NCAP safety ratings, and modern road presence for Indian consumers.',
     keywords: ['Tata', 'Mahindra', 'SUV', 'Nexon', 'Thar', 'Scorpio-N', 'Harrier', 'Safety'],
+    mainKeyword: 'Indian SUV Market',
+    relatedKeywords: ['Tata vs Mahindra SUVs', 'SUV Market in India'],
+    primaryAnchorText: '5-star crash safety ratings',
     keyTakeaways: [
       'Indian SUV buyers transformed from prioritizing fuel economy alone to demanding 5-star crash safety and ADAS capabilities.',
       'Tata Motors pioneered accessible passenger EV adoption in India with its Gen-2 acti.ev architecture.',
@@ -25,7 +31,7 @@ export const ARTICLES: Article[] = [
       {
         heading: 'The Shift From Agricultural Utility to Highway Dominance',
         paragraphs: [
-          'Two decades ago, the term "SUV" in the Indian subcontinent evoked images of rugged, spartan utility vehicles. Workhorses like the original Mahindra Armada, the classic Bolero, and the ubiquitous Tata Sumo were built to withstand rural cart tracks and relentless monsoons, with little consideration for NVH (noise, vibration, harshness) levels or highway stability.',
+          'The transformation of the **Indian SUV Market** represents one of the most remarkable shifts in modern automotive history. While foreign brands once dominated sales charts, the fierce domestic rivalry of **Tata vs Mahindra SUVs** redefined consumer expectations by introducing [5-star crash safety ratings](/indian-suv-market), high ground clearance and luxury cabin refinement to the broader **SUV Market in India**.',
           'Fast forward to 2026, and the Indian passenger vehicle landscape has undergone a monumental tectonic shift. Over 52% of all passenger cars sold in the country are now SUVs. Crucially, it is not imported multinational marques dictating this segment, but home-grown giants: Tata Motors and Mahindra & Mahindra.'
         ],
         quote: 'Safety and design are no longer optional extras in India — they have become foundational entry requirements for every modern buyer.',
@@ -48,15 +54,18 @@ export const ARTICLES: Article[] = [
         heading: 'Born Electric: The Next Frontier of Indigenous Mobility',
         paragraphs: [
           'With Tata commanding upwards of 68% of the electric four-wheeler market through the Nexon.ev, Punch.ev, and Curvv.ev, the race has shifted to dedicated pure-electric platforms. Mahindra’s "Born Electric" (BE) lineage, engineered in Banbury, UK and Chennai, leverages modular 60-80 kWh battery packs with ultra-fast 175 kW DC charging.',
-          'These are not mere badge-engineered conversions; they represent ground-up engineering prowess tailored for extreme tropical ambient temperatures, dust ingress, and unpredictable asphalt conditions.'
+          'These are not mere badge-engineered conversions; they represent ground-up engineering prowess tailored for extreme tropical ambient temperatures, dust ingress, and unpredictable asphalt conditions. Discover more about the nationwide shift in our report on [India\'s EV Ecosystem: From Two-Wheelers to Global Export Hub](/electric-vehicles-india). To understand how Indian engineering also captured global two-wheeler enthusiasts, read our analysis on [The Royal Enfield Phenomenon: Engineering Heritage Meets Global Modernity](/royal-enfield-motorcycles).'
         ]
       }
     ]
   },
   {
     id: 'indian-ev-ecosystem',
+    slug: 'electric-vehicles-india',
     category: 'EV REVOLUTION',
     title: "India's EV Ecosystem: From Two-Wheelers to Global Export Hub",
+    seoTitle: 'Electric Vehicles in India: Tech & Growth | Motor Chronicles',
+    metaDescription: 'Discover how electric vehicles in India, from electric two-wheelers in India to localized EV battery technology, are driving global export and clean mobility.',
     subtitle: 'How localized manufacturing, battery innovation, and urban commuting drove rapid adoption.',
     author: 'Ananya Roy',
     authorRole: 'Clean Tech & Mobility Correspondent, Bengaluru',
@@ -67,6 +76,9 @@ export const ARTICLES: Article[] = [
     imageCaption: 'Rapid DC charging network deployment across metro corridors',
     excerpt: 'Examining electric scooters, battery swapping networks, and how Indian EV technology is scaling internationally into ASEAN and European markets.',
     keywords: ['EV', 'Electric', 'Battery', 'Ola', 'Ather', 'Two-Wheeler', 'Clean Energy'],
+    mainKeyword: 'Electric Vehicles in India',
+    relatedKeywords: ['Electric Two-Wheelers in India', 'EV Battery Technology'],
+    primaryAnchorText: "India's EV Ecosystem: From Two-Wheelers to Global Export Hub",
     keyTakeaways: [
       'India’s EV revolution is bottom-up: high two-wheeler density makes micro-mobility the fastest pathway to zero emissions.',
       'Battery swapping infrastructure has reduced commercial fleet downtime to less than two minutes.',
@@ -77,7 +89,7 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Why Two-Wheelers Spearhead Electrification',
         paragraphs: [
-          'Unlike Western economies where electric adoption started with expensive luxury sedans and full-size electric pickups, India’s electric revolution is taking place on two wheels. With over 250 million registered two-wheelers across the nation, scooters and commuter motorcycles represent the lifeblood of daily urban transport.',
+          'The unprecedented growth of **Electric Vehicles in India** is revolutionizing transportation from the ground up across the subcontinent. Led by high-density urban adoption of **Electric Two-Wheelers in India** and breakthrough innovations in tropical **EV Battery Technology**, the nation is rapidly advancing from a domestic testbed into a competitive global export hub.',
           'Startups like Ather Energy, alongside industrial giants like TVS and Bajaj, recognized that the high operating miles of Indian commuters made Total Cost of Ownership (TCO) the primary driver of rapid conversion.'
         ]
       },
@@ -85,7 +97,7 @@ export const ARTICLES: Article[] = [
         heading: 'Thermal Management Under Extreme Climatic Stress',
         paragraphs: [
           'Engineering lithium-ion battery packs that survive continuous 45°C ambient heat in Delhi or Chennai without premature thermal runaway required bespoke pack chemistry and active phase-change cooling solutions.',
-          'The resulting engineering solutions have proven so resilient that global OEMs are now partnering with Indian tier-1 suppliers to source thermal-jacketed battery enclosures for tropical export markets.'
+          'The resulting engineering solutions have proven so resilient that global OEMs are now partnering with Indian tier-1 suppliers to source thermal-jacketed battery enclosures for tropical export markets. Just as domestic automotive safety was revolutionized by [5-star crash safety ratings](/indian-suv-market) pioneered by Tata and Mahindra, Chennai\'s two-wheeler craft is reaching worldwide acclaim in [The Royal Enfield Phenomenon: Engineering Heritage Meets Global Modernity](/royal-enfield-motorcycles).'
         ],
         quote: 'If a battery management system can survive three summers of Mumbai humidity and Delhi traffic jams, it can survive anywhere on Earth.',
         quoteAuthor: 'Dr. Vivek Menon, Indian Battery Consortium'
@@ -94,8 +106,11 @@ export const ARTICLES: Article[] = [
   },
   {
     id: 'royal-enfield-heritage',
+    slug: 'royal-enfield-motorcycles',
     category: 'TWO WHEELS',
     title: 'The Royal Enfield Phenomenon: Engineering Heritage Meets Global Modernity',
+    seoTitle: 'Royal Enfield Motorcycles: Heritage Drive | Motor Chronicles',
+    metaDescription: 'Explore Royal Enfield motorcycles, the new Royal Enfield Himalayan 450, and authentic motorcycle engineering delivering pure tactile character worldwide.',
     subtitle: 'How Chennai became the global epicenter for mid-size motorcycle manufacturing.',
     author: 'Vikram Sengupta',
     authorRole: 'Motorcycle Editor & Test Rider, Pune',
@@ -106,6 +121,9 @@ export const ARTICLES: Article[] = [
     imageCaption: 'The Sherpa 450 Liquid-Cooled Single-Cylinder Powerplant',
     excerpt: 'The journey of the Bullet, Interceptor, and Himalayan platforms in captivating riders across North America, Europe, and Asia.',
     keywords: ['Royal Enfield', 'Himalayan', 'Bullet', 'Motorcycle', 'Chennai', 'Mid-Size'],
+    mainKeyword: 'Royal Enfield Motorcycles',
+    relatedKeywords: ['Royal Enfield Himalayan 450', 'Motorcycle Engineering'],
+    primaryAnchorText: 'The Royal Enfield Phenomenon: Engineering Heritage Meets Global Modernity',
     keyTakeaways: [
       'Royal Enfield owns over 85% of the 250cc-750cc motorcycle segment in India.',
       'The transition from push-rod air-cooled engines to the Sherpa 450 DOHC liquid-cooled unit marks a pivotal engineering milestone.',
@@ -115,22 +133,25 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Character Over Pure Horsepower',
         paragraphs: [
-          'In an era dominated by hyper-revving sportbikes fitted with six-axis IMUs, launch control, and endless digital screens, Royal Enfield carved out a commanding global niche by doubling down on analog tactile joy.',
+          'The global renaissance of **Royal Enfield Motorcycles** demonstrates how classic character and modern production can conquer international markets. From the rugged high-altitude prowess of the liquid-cooled **Royal Enfield Himalayan 450** to twin-cylinder cruisers, Chennai has proven that authentic **Motorcycle Engineering** prioritizing tactile torque and rider communion triumphs in a digital world.',
           'From the thump of the venerable Cast Iron Bullet to the refined 270-degree firing order of the 650 Twins, Royal Enfield proved that motorcycling is fundamentally an emotional communion between rider and machine.'
         ]
       },
       {
         heading: 'The Himalayan 450: The High-Altitude Crucible',
         paragraphs: [
-          'The introduction of the Himalayan 450, powered by the brand’s first liquid-cooled DOHC "Sherpa 450" engine, was forged directly in the crucible of Ladakh’s Khardung La pass. With 40 horsepower, ride-by-wire throttle, and Showa upside-down forks, it balances authentic Himalayan off-road capability with all-day interstate cruising poise.'
+          'The introduction of the Himalayan 450, powered by the brand’s first liquid-cooled DOHC "Sherpa 450" engine, was forged directly in the crucible of Ladakh’s Khardung La pass. With 40 horsepower, ride-by-wire throttle, and Showa upside-down forks, it balances authentic Himalayan off-road capability with all-day interstate cruising poise. Parallel to how Tata and Mahindra transformed four-wheelers with [5-star crash safety ratings](/indian-suv-market), and how the nation accelerated clean transport in [India\'s EV Ecosystem: From Two-Wheelers to Global Export Hub](/electric-vehicles-india), Chennai established that Indian mechanical craft holds worldwide respect.'
         ]
       }
     ]
   },
   {
     id: 'ferrari-porsche-supercars',
+    slug: 'iconic-modern-supercars',
     category: 'PERFORMANCE',
     title: 'What Makes a Supercar Truly Iconic in 2026?',
+    seoTitle: 'Iconic Modern Supercars: V12 Performance | Motor Chronicles',
+    metaDescription: 'Explore iconic modern supercars balancing howling hybrid V12 powertrains with active aerodynamics technology and steering feedback for track supremacy.',
     subtitle: 'Hybrid V12 engines, active aerodynamics, and the delicate balance between analog feedback and speed.',
     author: 'Editorial Team',
     authorRole: 'Global Performance Desk, Maranello & Stuttgart',
@@ -141,6 +162,8 @@ export const ARTICLES: Article[] = [
     imageCaption: 'Aerodynamic active rear diffuser and carbon-ceramic brake assembly',
     excerpt: 'Comparing high-revving naturally aspirated engines with modern electric torque-vectoring hypercars.',
     keywords: ['Supercar', 'Ferrari', 'Porsche', 'V12', 'Performance', 'Aerodynamics', 'Track'],
+    mainKeyword: 'Iconic Modern Supercars',
+    relatedKeywords: ['Hybrid V12 Powertrains', 'Active Aerodynamics Technology'],
     keyTakeaways: [
       'Straight-line 0-100 km/h acceleration is democratized by EVs; supercar prestige now hinges on steering feedback and mechanical acoustics.',
       'Active ground-effect tunnels and flex-wing aerodynamics produce downforce without drag penalties.',
@@ -150,16 +173,19 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Beyond the Numbers: The Search for Soul',
         paragraphs: [
-          'When a family hatchback can sprint from 0 to 100 km/h in under three seconds thanks to twin electric motors, the traditional currency of supercar supremacy has fundamentally changed.',
-          'Today, genuine hypercar prestige is measured in acoustic resonance, torsional chassis feedback through the steering rack, and the goosebumps induced by downshifting into a high-speed apex.'
+          'The criteria defining **Iconic Modern Supercars** have fundamentally transformed in an era where electric passenger vehicles offer effortless straight-line acceleration. Today, engineering prestige requires howling **Hybrid V12 Powertrains**, track-honed **Active Aerodynamics Technology**, and intoxicating acoustic communication between pilot and machine.',
+          'When a family crossover can sprint from 0 to 100 km/h in under three seconds thanks to twin electric motors, the traditional currency of supercar supremacy has fundamentally changed. Supercars today must deliver emotional engagement, exhaust resonance, steering tactile precision, and breathtaking design language.'
         ]
       }
     ]
   },
   {
     id: 'f1-aerodynamics-explained',
+    slug: 'formula-1-aerodynamics',
     category: 'MOTORSPORT',
     title: "How Formula 1 Aerodynamics Shapes Tomorrow's Road Vehicles",
+    seoTitle: 'Formula 1 Aerodynamics: Road Car Tech | Motor Chronicles',
+    metaDescription: 'Discover how Formula 1 aerodynamics, from ground effect underbody tunnels to hybrid energy recovery, accelerates direct road car technology transfer.',
     subtitle: 'Ground effect tunnels, carbon composite structures, and thermal management secrets.',
     author: 'Marcus Vance',
     authorRole: 'Chief Technical Correspondent, Silverstone',
@@ -170,6 +196,8 @@ export const ARTICLES: Article[] = [
     imageCaption: 'Venturi tunnels creating underfloor low-pressure suction',
     excerpt: 'From downforce management to brake energy recovery, how F1 track tech trickles down to production cars.',
     keywords: ['F1', 'Aerodynamics', 'Downforce', 'Motorsport', 'Engineering', 'Venturi'],
+    mainKeyword: 'Formula 1 Aerodynamics',
+    relatedKeywords: ['Ground Effect Underbody Tunnels', 'Road Car Technology Transfer'],
     keyTakeaways: [
       'Underbody Venturi tunnels deliver high downforce with minimal induced aerodynamic drag.',
       'F1 brake-by-wire and MGU-K energy harvesting directly inspired contemporary EV regenerative braking.',
@@ -179,16 +207,19 @@ export const ARTICLES: Article[] = [
       {
         heading: 'The World’s Most High-Speed Laboratory',
         paragraphs: [
-          'Formula 1 has always been a ruthless technological incubator. But with the introduction of ground-effect aerodynamics and 50%+ thermal efficiency hybrid power units, the crossover into road car architecture has never been more immediate.',
-          'Modern electric vehicles, which require slippery aerodynamic profiles to maximize highway range, rely on the exact vortex-shedding principles pioneered by Grand Prix aerodynamicists.'
+          'The cutting-edge evolution of **Formula 1 Aerodynamics** serves as the automotive world\'s most high-speed laboratory. From aerodynamic **Ground Effect Underbody Tunnels** that generate downforce with minimal induced drag to hybrid MGU-K energy harvesting, the pace of **Road Car Technology Transfer** continues to shape next-generation road performance.',
+          'Formula 1 has always been a ruthless technological incubator. With the introduction of ground-effect aerodynamics and 50%+ thermal efficiency hybrid power units, the crossover into road car architecture has never been more immediate.'
         ]
       }
     ]
   },
   {
     id: 'software-defined-vehicles',
+    slug: 'software-defined-vehicles',
     category: 'INDIA AUTO',
     title: 'Software-Defined Vehicles: How Electronics are Replacing Mechanical Links',
+    seoTitle: 'Software-Defined Vehicles: Smart Cars | Motor Chronicles',
+    metaDescription: 'Inside software-defined vehicles where centralized domain controllers and over-the-air firmware updates replace traditional mechanical vehicle links.',
     subtitle: 'OTA updates, drive-by-wire steering, and artificial intelligence in contemporary Indian cars.',
     author: 'Rajesh Sharma',
     authorRole: 'Senior Automotive Analyst, New Delhi',
@@ -199,6 +230,8 @@ export const ARTICLES: Article[] = [
     imageCaption: 'Centralized domain controller running zonal automotive architecture',
     excerpt: 'Inside modern car architectures where software algorithms dictate suspension geometry, regenerative braking, and safety interventions.',
     keywords: ['Software', 'OTA', 'ADAS', 'AI', 'Connected Car', 'India Auto'],
+    mainKeyword: 'Software-Defined Vehicles',
+    relatedKeywords: ['Centralized Domain Controllers', 'Over-the-Air Firmware Updates'],
     keyTakeaways: [
       'Modern vehicles run over 100 million lines of code across centralized domain controllers.',
       'Over-the-air firmware updates can improve battery efficiency, power output, and suspension damping overnight.',
@@ -208,16 +241,19 @@ export const ARTICLES: Article[] = [
       {
         heading: 'The Transition from 80 ECUs to Central Compute',
         paragraphs: [
-          'In older vehicles, every minor subsystem—from the power windows to the anti-lock braking module—had its own independent Electronic Control Unit (ECU). Today, automotive architectures are consolidating into unified zonal compute platforms.',
-          'This allows Indian manufacturers to roll out safety optimizations, new steering weight profiles, and navigation enhancements directly to owner driveways via cloud connectivity.'
+          'The rapid emergence of **Software-Defined Vehicles** is replacing traditional mechanical linkages with high-speed digital code and cloud intelligence. Operating on **Centralized Domain Controllers**, contemporary automobiles now calibrate suspension damping and enhance battery efficiency through seamless **Over-the-Air Firmware Updates**.',
+          'In older vehicles, every minor subsystem—from the power windows to the anti-lock braking module—had its own independent Electronic Control Unit (ECU). Today, automotive architectures are consolidating into unified zonal compute platforms.'
         ]
       }
     ]
   },
   {
     id: 'adventure-motorcycling-india',
+    slug: 'adventure-motorcycling-india',
     category: 'TWO WHEELS',
     title: 'The Rise of Adventure Motorcycling Culture across India',
+    seoTitle: 'Adventure Motorcycling Culture in India | Motor Chronicles',
+    metaDescription: 'Explore the rise of adventure motorcycling culture in India, powered by middleweight ADV touring bikes with rugged long-travel suspension engineering.',
     subtitle: 'Why middleweight ADV bikes are conquering the Himalayas and coastal highways alike.',
     author: 'Vikram Sengupta',
     authorRole: 'Motorcycle Editor & Test Rider, Pune',
@@ -228,6 +264,8 @@ export const ARTICLES: Article[] = [
     imageCaption: '21-inch front spoke wheels traversing high-altitude river crossings',
     excerpt: 'Long-travel suspension, dual-purpose tires, and the booming touring community in Leh-Ladakh, Spiti Valley, and the Western Ghats.',
     keywords: ['ADV', 'Adventure', 'Himalayas', 'Touring', 'KTM', 'Royal Enfield', 'BMW GS'],
+    mainKeyword: 'Adventure Motorcycling Culture',
+    relatedKeywords: ['Middleweight ADV Touring Bikes', 'Long-Travel Suspension Engineering'],
     keyTakeaways: [
       'Middleweight ADVs (300cc-500cc) hit the golden balance between rough-road capability and manageable curb weight.',
       'Upright ergonomics and 200mm+ suspension travel handle broken pavement, speed breakers, and off-road trails effortlessly.',
@@ -237,16 +275,19 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Built for the Real World',
         paragraphs: [
-          'While hypersport motorcycles look sensational on smooth race tracks, the reality of Indian highways demands generous ground clearance, plush long-travel damping, and a commanding upright vantage point over chaotic city traffic.',
-          'The adventure bike has become the two-wheeled equivalent of the SUV: practical, commanding, and ready to tackle a spontaneous 2,000-kilometer overland expedition.'
+          'A sweeping explosion in **Adventure Motorcycling Culture** has transformed how riders explore the subcontinent from Ladakh\'s high passes to coastal highway stretches. Powered by accessible **Middleweight ADV Touring Bikes** equipped with rugged **Long-Travel Suspension Engineering**, enthusiasts now effortlessly conquer jagged rock trails and cross-country distances alike.',
+          'While hypersport motorcycles look sensational on smooth race tracks, the reality of Indian highways demands generous ground clearance, plush long-travel damping, and a commanding upright vantage point over chaotic city traffic.'
         ]
       }
     ]
   },
   {
     id: 'classic-car-restoration-heritage',
+    slug: 'vintage-car-restoration',
     category: 'PERFORMANCE',
     title: 'Preserving Automotive Heritage: Vintage Car Restoration in India',
+    seoTitle: 'Vintage Automotive Restoration: Heritage | Motor Chronicles',
+    metaDescription: 'Preserving coachbuilt classic car heritage in India through vintage automotive restoration, generational hand-wheeled metal craftsmanship, and royal fleets.',
     subtitle: 'The master artisans keeping rare vintage Rolls-Royces, Jaguars, and Ambassador cars alive.',
     author: 'Editorial Team',
     authorRole: 'Historical Archives Desk, Jaipur & Kolkata',
@@ -257,6 +298,8 @@ export const ARTICLES: Article[] = [
     imageCaption: 'Hand-wheeled aluminum body panels and bespoke period-correct upholstery',
     excerpt: 'Hand-beaten metal panels, engine rebuilds, and the unrelenting passion behind classic automotive preservation.',
     keywords: ['Vintage', 'Classic', 'Restoration', 'Rolls-Royce', 'Ambassador', 'Heritage'],
+    mainKeyword: 'Vintage Automotive Restoration',
+    relatedKeywords: ['Coachbuilt Classic Car Heritage', 'Hand-Wheeled Metal Craftsmanship'],
     keyTakeaways: [
       'India holds some of the world’s most unique pre-war coachbuilt automobiles commissioned by erstwhile royal families.',
       'Master panel-beaters in Kolkata and Mumbai reconstruct fenders using traditional English wheels and wooden bucks.',
@@ -266,16 +309,19 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Living History on Four Wheels',
         paragraphs: [
-          'Hidden behind unassuming garage shutters in Jaipur, Mumbai, and Kolkata are workshops where time stands still. Master metalworkers hand-shape complex compound curves without computerized stamps, restoring priceless Maharajah cars back to factory perfection.',
-          'Preserving these machines is not merely about mechanical engineering; it is an act of safeguarding cultural and industrial heritage.'
+          'The delicate art of **Vintage Automotive Restoration** in India safeguards living history spanning pre-war royal fleets and legendary Ambassador models. Preserving this rare **Coachbuilt Classic Car Heritage** relies on generational **Hand-Wheeled Metal Craftsmanship**, where master panel-beaters resurrect compound body curves without computerized machinery.',
+          'Hidden behind unassuming garage shutters in Jaipur, Mumbai, and Kolkata are workshops where time stands still. Master metalworkers hand-shape complex compound curves without computerized stamps, restoring priceless Maharajah cars back to factory perfection.'
         ]
       }
     ]
   },
   {
     id: 'turbocharged-engine-tech',
+    slug: 'turbocharged-petrol-engines',
     category: 'INDIA AUTO',
     title: 'The Engineering Behind Small-Displacement Turbo Engines',
+    seoTitle: 'Turbocharged Petrol Engines: Efficiency | Motor Chronicles',
+    metaDescription: 'Understand turbocharged petrol engines combining small-displacement engine efficiency with direct fuel injection technology for high output and low emissions.',
     subtitle: 'How 1.0L and 1.5L turbocharged petrol engines deliver power without sacrificing efficiency.',
     author: 'Ananya Roy',
     authorRole: 'Clean Tech & Mobility Correspondent, Bengaluru',
@@ -286,6 +332,8 @@ export const ARTICLES: Article[] = [
     imageCaption: 'Twin-scroll turbocharger with integrated electronic wastegate actuator',
     excerpt: 'Direct injection, variable valve timing, and twin-scroll turbos in compact Indian hatchbacks, sedans, and crossover SUVs.',
     keywords: ['Turbo', 'Engine', 'Downsizing', 'Efficiency', 'Horsepower', 'Mechanics'],
+    mainKeyword: 'Turbocharged Petrol Engines',
+    relatedKeywords: ['Small-Displacement Engine Efficiency', 'Direct Fuel Injection Technology'],
     keyTakeaways: [
       'Downsizing displacement reduces internal friction losses during low-load city driving.',
       'Low-inertia turbine wheels eliminate old-school turbo lag, delivering peak torque as early as 1,500 RPM.',
@@ -295,6 +343,7 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Maximum Output, Minimum Footprint',
         paragraphs: [
+          'The engineering mastery behind compact **Turbocharged Petrol Engines** has completely rewritten the relationship between fuel economy and instantaneous acceleration. By maximizing **Small-Displacement Engine Efficiency** with high-pressure **Direct Fuel Injection Technology**, modern three- and four-cylinder motors deliver robust low-end boost while curbing urban emissions.',
           'Stricter emission norms like BS6 Stage 2 forced automotive engineers to reconsider traditional large-displacement naturally aspirated engines. By utilizing high-pressure direct fuel injectors and lightweight turbochargers, small three-cylinder engines now output power figures that once required a hefty 2.0-liter block.'
         ]
       }
@@ -302,8 +351,11 @@ export const ARTICLES: Article[] = [
   },
   {
     id: 'motogp-racing-engineering',
+    slug: 'motogp-racing-mechanics',
     category: 'MOTORSPORT',
     title: 'MotoGP Mechanics: Riding at 350 km/h on Two Wheels',
+    seoTitle: 'MotoGP Racing Mechanics: Track Physics | Motor Chronicles',
+    metaDescription: 'Examine MotoGP racing mechanics, high-speed prototype motorcycle aerodynamics, and carbon brake thermal management operating above 800 degrees Celsius.',
     subtitle: 'Seamless gearboxes, pneumatic valves, and lean angles exceeding 64 degrees.',
     author: 'Marcus Vance',
     authorRole: 'Chief Technical Correspondent, Silverstone',
@@ -314,6 +366,8 @@ export const ARTICLES: Article[] = [
     imageCaption: 'Carbon-carbon brake discs glowing at 850°C under heavy braking',
     excerpt: 'Exploring the extreme physics and engineering required to handle 300-horsepower prototype motorcycles around the Buddh International Circuit and beyond.',
     keywords: ['MotoGP', 'Racing', 'Motorcycle', 'Aerodynamics', 'Brakes', 'Speed'],
+    mainKeyword: 'MotoGP Racing Mechanics',
+    relatedKeywords: ['Prototype Motorcycle Aerodynamics', 'Carbon Brake Thermal Management'],
     keyTakeaways: [
       'MotoGP prototypes produce over 300 horsepower from a 1,000cc four-cylinder engine while weighing just 157 kilograms.',
       'Seamless transmissions allow upshifts and downshifts with zero drive torque interruption.',
@@ -323,8 +377,8 @@ export const ARTICLES: Article[] = [
       {
         heading: 'Taming the 300-Horsepower Missile',
         paragraphs: [
-          'A MotoGP bike is the purest physical contest between raw mechanical violence and rider bravery. Accelerating from 0 to 200 km/h in under five seconds while leaning at angles that drag both knee and elbow on the curbing requires sublime mechanical synchronization.',
-          'With the Indian Grand Prix returning to the calendar, fans are witnessing first-hand the astonishing brake forces generated by carbon discs glowing cherry red under deceleration.'
+          'The extreme physics of **MotoGP Racing Mechanics** represents the purest physical contest between raw violence and rider bravery. Taming 300-horsepower missiles through advanced **Prototype Motorcycle Aerodynamics** and cherry-red **Carbon Brake Thermal Management** operating above 800 degrees Celsius pushes two-wheeled dynamics to their utmost boundaries.',
+          'A MotoGP bike is the purest physical contest between raw mechanical violence and rider bravery. Accelerating from 0 to 200 km/h in under five seconds while leaning at angles that drag both knee and elbow on the curbing requires sublime mechanical synchronization.'
         ]
       }
     ]

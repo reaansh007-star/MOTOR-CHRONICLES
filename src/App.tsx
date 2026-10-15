@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { MetricTicker } from './components/MetricTicker';
+import { HomepageH1Header } from './components/HomepageH1Header';
 import { HeroLead } from './components/HeroLead';
 import { ArticleCard } from './components/ArticleCard';
-import { ArticleModal } from './components/ArticleModal';
+import { ArticlePage } from './components/ArticlePage';
 import { SearchModal } from './components/SearchModal';
 import { BookmarksDrawer } from './components/BookmarksDrawer';
 import { BrandLandscape } from './components/BrandLandscape';
@@ -11,16 +12,54 @@ import { MachineComparison } from './components/MachineComparison';
 import { Newsletter } from './components/Newsletter';
 import { Footer } from './components/Footer';
 
+import { FaqSection, getFaqSchemaJsonLd } from './components/FaqSection';
+import { AttachedEditorialAnchors } from './components/AttachedEditorialAnchors';
+import { updatePageMeta } from './utils/seo';
+
 import { ARTICLES } from './data/articles';
 import { BRAND_PROFILES } from './data/brands';
 import { MACHINE_SHOWDOWNS } from './data/comparisons';
 import { Article, ArticleCategory } from './types';
-import { Car, Bookmark, Sparkles, Filter, SlidersHorizontal, RotateCcw } from 'lucide-react';
+import { parseCurrentRoute, getCategoryUrl, getShowdownUrl, getSavedUrl, getHomepageUrl } from './utils/routing';
+import { PageKeywordsBanner } from './components/PageKeywordsBanner';
+import { Car, Bookmark, Filter, SlidersHorizontal, RotateCcw } from 'lucide-react';
+
+const PAGE_KEYWORDS_MAP: Record<string, { mainKeyword: string; relatedKeywords: [string, string] }> = {
+  ALL: {
+    mainKeyword: 'Car News India',
+    relatedKeywords: ['Indian SUV Market', 'Electric Vehicles in India'],
+  },
+  'INDIA AUTO': {
+    mainKeyword: 'Indian SUV Market',
+    relatedKeywords: ['Tata vs Mahindra SUVs', 'SUV Market in India'],
+  },
+  'EV REVOLUTION': {
+    mainKeyword: 'Electric Vehicles in India',
+    relatedKeywords: ['Electric Two-Wheelers in India', 'EV Battery Technology'],
+  },
+  'TWO WHEELS': {
+    mainKeyword: 'Royal Enfield Motorcycles',
+    relatedKeywords: ['Royal Enfield Himalayan 450', 'Motorcycle Engineering'],
+  },
+  PERFORMANCE: {
+    mainKeyword: 'Iconic Modern Supercars',
+    relatedKeywords: ['Hybrid V12 Powertrains', 'Active Aerodynamics Technology'],
+  },
+  MOTORSPORT: {
+    mainKeyword: 'Formula 1 Aerodynamics',
+    relatedKeywords: ['Ground Effect Underbody Tunnels', 'Road Car Technology Transfer'],
+  },
+  BOOKMARKS: {
+    mainKeyword: 'Personal Automotive Reading Shelf',
+    relatedKeywords: ['Saved Engineering Features', 'Offline Automotive Journal'],
+  },
+};
 
 export default function App() {
+  // Routing State
+  const [route, setRoute] = useState(() => parseCurrentRoute());
   const [currentCategory, setCurrentCategory] = useState<ArticleCategory | 'ALL' | 'BOOKMARKS'>('ALL');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   
   // Modals state
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -69,6 +108,104 @@ export default function App() {
     }
   }, [bookmarkedIds]);
 
+  // Listen to browser navigation / history events
+  useEffect(() => {
+    const handlePopState = () => {
+      const parsed = parseCurrentRoute();
+      setRoute(parsed);
+      if (parsed.type === 'category' && parsed.category) {
+        setCurrentCategory(parsed.category);
+      } else if (parsed.type === 'saved') {
+        setCurrentCategory('BOOKMARKS');
+      } else if (parsed.type === 'showdown') {
+        setIsComparisonOpen(true);
+      } else if (parsed.type === 'home') {
+        setCurrentCategory('ALL');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Sync route on initial load
+  useEffect(() => {
+    if (route.type === 'category' && route.category) {
+      setCurrentCategory(route.category);
+    } else if (route.type === 'saved') {
+      setCurrentCategory('BOOKMARKS');
+    } else if (route.type === 'showdown') {
+      setIsComparisonOpen(true);
+    }
+  }, [route]);
+
+  // Canonical Redirect for legacy URLs (e.g. /article/tata-mahindra-suv-story -> /indian-suv-market)
+  useEffect(() => {
+    if (route.isCanonicalRedirect && route.article) {
+      window.history.replaceState({}, '', `/${route.article.slug}`);
+    }
+  }, [route]);
+
+  // Synchronize SEO Title, Meta Description, Canonical URL, and Schema.org Structured Data
+  useEffect(() => {
+    if (route.type === 'article') return; // Handled directly inside ArticlePage
+
+    if (currentCategory === 'ALL') {
+      updatePageMeta({
+        title: 'Car News India: Automotive Stories | Motor Chronicles',
+        description:
+          'Car News India brings you in-depth stories on the Indian SUV market, electric vehicles in India, motorcycle engineering, supercars, and global motorsport.',
+        canonicalPath: '/car-news-india',
+        ogType: 'website',
+        jsonLd: {
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'WebSite',
+              name: 'Motor Chronicles',
+              url: typeof window !== 'undefined' ? window.location.origin : 'https://motorchronicles.com',
+              description:
+                'Car News India brings you in-depth stories on the Indian SUV market, electric vehicles in India, motorcycle engineering, supercars, and global motorsport.',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: `${typeof window !== 'undefined' ? window.location.origin : ''}/?search={search_term_string}`,
+                'query-input': 'required name=search_term_string',
+              },
+            },
+            getFaqSchemaJsonLd(),
+          ],
+        },
+      });
+    } else {
+      const pageInfo = PAGE_KEYWORDS_MAP[currentCategory] || PAGE_KEYWORDS_MAP.ALL;
+      updatePageMeta({
+        title: `${pageInfo.mainKeyword}: Stories & Analysis | Motor Chronicles`,
+        description: `Explore ${pageInfo.mainKeyword} alongside ${pageInfo.relatedKeywords[0]} and ${pageInfo.relatedKeywords[1]} with in-depth technical analysis on Motor Chronicles.`,
+        canonicalPath:
+          currentCategory === 'BOOKMARKS' ? getSavedUrl() : getCategoryUrl(currentCategory as ArticleCategory),
+        ogType: 'website',
+      });
+    }
+  }, [currentCategory, route.type]);
+
+  // Update URL without full page reload when switching views in same tab
+  const navigateCategory = (cat: ArticleCategory | 'ALL' | 'BOOKMARKS') => {
+    setCurrentCategory(cat);
+    setSearchQuery('');
+    if (cat === 'ALL') {
+      window.history.pushState({}, '', '/car-news-india');
+    } else if (cat === 'BOOKMARKS') {
+      window.history.pushState({}, '', getSavedUrl());
+    } else {
+      window.history.pushState({}, '', getCategoryUrl(cat));
+    }
+  };
+
+  const navigateShowdown = () => {
+    setIsComparisonOpen(true);
+    window.history.pushState({}, '', getShowdownUrl());
+  };
+
   // Toggle Bookmark Handler
   const handleToggleBookmark = (articleId: string) => {
     setBookmarkedIds((prev) =>
@@ -85,9 +222,26 @@ export default function App() {
   const handleFilterByBrand = (brandTerm: string) => {
     setSearchQuery(brandTerm);
     setCurrentCategory('ALL');
+    window.history.pushState({}, '', `/?search=${encodeURIComponent(brandTerm)}`);
     const el = document.getElementById('articlesSection');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // If the current route is a standalone article page (e.g. /article/:slug)
+  if (route.type === 'article' && route.article) {
+    const article = route.article;
+    const related = ARTICLES.filter((a) => a.id !== article.id && a.category === article.category).slice(0, 3);
+    return (
+      <ArticlePage
+        article={article}
+        relatedArticles={related}
+        isBookmarked={bookmarkedIds.includes(article.id)}
+        onToggleBookmark={handleToggleBookmark}
+        isDarkMode={isDarkMode}
+        onToggleTheme={() => setIsDarkMode(!isDarkMode)}
+      />
+    );
+  }
 
   // Filtered & Sorted Articles
   const filteredArticles = ARTICLES.filter((art) => {
@@ -123,11 +277,6 @@ export default function App() {
   // Lead Feature Story
   const heroStory = ARTICLES[0];
 
-  // Related articles for the modal reader
-  const relatedArticles = selectedArticle
-    ? ARTICLES.filter((a) => a.id !== selectedArticle.id && a.category === selectedArticle.category).slice(0, 3)
-    : [];
-
   const categoriesList: { label: string; value: ArticleCategory | 'ALL' | 'BOOKMARKS' }[] = [
     { label: 'ALL STORIES', value: 'ALL' },
     { label: 'INDIA AUTO', value: 'INDIA AUTO' },
@@ -144,23 +293,29 @@ export default function App() {
         {/* Navigation & Announcement Header */}
         <Header
           currentCategory={currentCategory}
-          onSelectCategory={(cat) => {
-            setCurrentCategory(cat);
-            setSearchQuery('');
-          }}
+          onSelectCategory={navigateCategory}
           onOpenSearch={() => setIsSearchOpen(true)}
           onOpenBookmarks={() => setIsBookmarksOpen(true)}
-          onOpenComparison={() => setIsComparisonOpen(true)}
+          onOpenComparison={navigateShowdown}
           bookmarkedCount={bookmarkedIds.length}
           isDarkMode={isDarkMode}
           onToggleTheme={() => setIsDarkMode(!isDarkMode)}
         />
 
+        {/* Interactive Homepage Main Title — H1 */}
+        {currentCategory === 'ALL' && searchQuery === '' && (
+          <HomepageH1Header
+            onExploreClick={() => {
+              const el = document.getElementById('heroStorySection') || document.getElementById('articlesSection');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+          />
+        )}
+
         {/* Cinematic Lead Story (Shown on Home Feed) */}
         {currentCategory === 'ALL' && searchQuery === '' && (
           <HeroLead
             article={heroStory}
-            onOpenArticle={(art) => setSelectedArticle(art)}
             isBookmarked={bookmarkedIds.includes(heroStory.id)}
             onToggleBookmark={handleToggleBookmark}
           />
@@ -198,10 +353,7 @@ export default function App() {
                   return (
                     <button
                       key={cat.value}
-                      onClick={() => {
-                        setCurrentCategory(cat.value);
-                        setSearchQuery('');
-                      }}
+                      onClick={() => navigateCategory(cat.value)}
                       className={`px-3 py-1.5 transition-all duration-200 cursor-pointer font-bold ${
                         isActive
                           ? 'bg-[#B51F2B] text-white shadow-md'
@@ -215,7 +367,7 @@ export default function App() {
 
                 {/* Saved Shelf Pill */}
                 <button
-                  onClick={() => setCurrentCategory('BOOKMARKS')}
+                  onClick={() => navigateCategory('BOOKMARKS')}
                   className={`px-3 py-1.5 transition-all duration-200 cursor-pointer font-bold flex items-center space-x-1 ${
                     currentCategory === 'BOOKMARKS'
                       ? 'bg-[#B51F2B] text-white shadow-md'
@@ -244,6 +396,19 @@ export default function App() {
             </div>
           </div>
 
+          {/* Page SEO & Focus Keywords Banner */}
+          {(() => {
+            const currentKeywords = PAGE_KEYWORDS_MAP[currentCategory] || PAGE_KEYWORDS_MAP.ALL;
+            return (
+              <PageKeywordsBanner
+                pageTitle={currentCategory}
+                mainKeyword={currentKeywords.mainKeyword}
+                relatedKeywords={currentKeywords.relatedKeywords}
+                variant="page"
+              />
+            );
+          })()}
+
           {/* Active Search Query Notice */}
           {searchQuery && (
             <div className="mb-8 p-3 bg-[#F1E6D2] dark:bg-[#242424] border border-[#D9D3C9] dark:border-[#343434] flex justify-between items-center text-xs font-['Barlow_Condensed'] uppercase tracking-wider">
@@ -251,7 +416,10 @@ export default function App() {
                 FILTERING BY QUERY: <strong className="text-[#B51F2B]">"{searchQuery}"</strong> ({filteredArticles.length} RESULTS)
               </span>
               <button
-                onClick={() => setSearchQuery('')}
+                onClick={() => {
+                  setSearchQuery('');
+                  window.history.pushState({}, '', '/');
+                }}
                 className="text-[#B51F2B] font-bold hover:underline flex items-center space-x-1 cursor-pointer"
               >
                 <RotateCcw className="w-3 h-3" />
@@ -260,14 +428,13 @@ export default function App() {
             </div>
           )}
 
-          {/* Articles Grid */}
+          {/* Articles Grid — each opens in new tab */}
           {filteredArticles.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredArticles.map((article) => (
                 <ArticleCard
                   key={article.id}
                   article={article}
-                  onOpenArticle={(art) => setSelectedArticle(art)}
                   isBookmarked={bookmarkedIds.includes(article.id)}
                   onToggleBookmark={handleToggleBookmark}
                 />
@@ -285,8 +452,7 @@ export default function App() {
               </p>
               <button
                 onClick={() => {
-                  setCurrentCategory('ALL');
-                  setSearchQuery('');
+                  navigateCategory('ALL');
                 }}
                 className="bg-[#B51F2B] hover:bg-[#4A101A] text-white font-['Barlow_Condensed'] uppercase px-6 py-2.5 text-sm font-bold tracking-widest transition-colors cursor-pointer"
               >
@@ -310,7 +476,7 @@ export default function App() {
               </p>
             </div>
             <button
-              onClick={() => setIsComparisonOpen(true)}
+              onClick={navigateShowdown}
               className="bg-[#B51F2B] hover:bg-[#4A101A] text-white px-8 py-3.5 font-['Barlow_Condensed'] uppercase tracking-widest text-sm font-bold transition-all transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap shadow-xl"
             >
               LAUNCH COMPARISON TOOL
@@ -323,6 +489,9 @@ export default function App() {
             onFilterByBrand={handleFilterByBrand}
           />
 
+          {/* Dedicated Homepage SEO FAQ Section */}
+          {currentCategory === 'ALL' && searchQuery === '' && <FaqSection />}
+
           {/* Weekly Dispatch Newsletter Section */}
           <Newsletter />
 
@@ -332,32 +501,18 @@ export default function App() {
       {/* Magazine Footer */}
       <Footer
         onSelectCategory={(cat) => {
-          setCurrentCategory(cat);
-          setSearchQuery('');
+          navigateCategory(cat);
           const el = document.getElementById('articlesSection');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }}
-        onOpenComparison={() => setIsComparisonOpen(true)}
+        onOpenComparison={navigateShowdown}
       />
-
-      {/* Reader Modal (Full Screen Story Experience) */}
-      {selectedArticle && (
-        <ArticleModal
-          article={selectedArticle}
-          onClose={() => setSelectedArticle(null)}
-          onOpenArticle={(art) => setSelectedArticle(art)}
-          isBookmarked={bookmarkedIds.includes(selectedArticle.id)}
-          onToggleBookmark={handleToggleBookmark}
-          relatedArticles={relatedArticles}
-        />
-      )}
 
       {/* Global Search Modal */}
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         articles={ARTICLES}
-        onSelectArticle={(art) => setSelectedArticle(art)}
       />
 
       {/* Bookmarks Saved Shelf Drawer */}
@@ -365,7 +520,6 @@ export default function App() {
         isOpen={isBookmarksOpen}
         onClose={() => setIsBookmarksOpen(false)}
         bookmarkedArticles={ARTICLES.filter((a) => bookmarkedIds.includes(a.id))}
-        onOpenArticle={(art) => setSelectedArticle(art)}
         onRemoveBookmark={handleToggleBookmark}
         onClearAll={handleClearBookmarks}
       />
@@ -373,7 +527,10 @@ export default function App() {
       {/* Interactive Machine Comparison Modal */}
       <MachineComparison
         isOpen={isComparisonOpen}
-        onClose={() => setIsComparisonOpen(false)}
+        onClose={() => {
+          setIsComparisonOpen(false);
+          window.history.pushState({}, '', '/');
+        }}
         showdowns={MACHINE_SHOWDOWNS}
       />
 
